@@ -1,0 +1,29 @@
+No mutationFn found
+Index routes must not have child routes. Please remove 
+0 0 24 24
+M18 6 6 18
+0 0 30 10
+0,0 30,0 15,10
+Falar no WhatsApp
+Reproduzir vídeo
+Pausar vídeo
+8,6 19,12 8,18
+Ativar som
+M4 9h4l5-4v14l-5-4H4z
+M16 9l4 4m0-4l-4 4
+M16 9a4 4 0 010 6M18.5 6.5a7 7 0 010 11
+Vídeo anterior
+Selecionar vídeo
+Próximo vídeo
+Depende do serviço e do estado do seu carro. Na avaliação, a gente te passa o prazo exato.
+Quanto custa?
+Sim! Transparência total. Você pode acompanhar o processo e tirar dúvidas a qualquer momento.
+A vitrificação dura quanto tempo?
+Com os cuidados certos (lavagem adequada, sem produtos abrasivos), dura até 2 anos.
+Vocês fazem orçamento sem compromisso?
+Sim. Você traz o carro, a gente avalia e passa o orçamento. Sem compromisso.
+Tem garantia?
+Posso parcelar?
+Sim. Aceitamos cartão de crédito com parcelamento.
+Vocês buscam e entregam o carro?
+Não. Você traz o carro até o nosso galpão.

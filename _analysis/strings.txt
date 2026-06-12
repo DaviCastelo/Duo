@@ -1,0 +1,205 @@
+mousedown mouseup touchcancel touchend touchstart auxclick dblclick pointercancel pointerdown pointerup dragend dragstart drop compositionend compositionstart keydown keypress keyup input textInput copy cut paste click change contextmenu reset submit
+---
+focusout contextmenu dragend focusin keydown keyup mousedown mouseup selectionchange
+---
+:t=n.value,t!=null&&Rr(e,!!n.multiple,t,!1)}};Zf=Uu;Jf=lr;var q0={usingClientEntryPoint:!1,Events:[ui,_r,zs,Yf,Xf,Uu]},xo={findFiberByHostInstance:Qn,bundleType:0,version:
+---
+:`${hr}px`,...A,...p.style},onDragEnd:()=>{pr(!1),Y(null),gr.current=null},onPointerDown:U=>{cl||!mr||(mc.current=new Date,co(vr.current),U.target.setPointerCapture(U.pointerId),U.target.tagName!==
+---
+||L.current||(L.current=!0,N.current=J.relatedTarget)},onMouseEnter:()=>z(!0),onMouseMove:()=>z(!0),onMouseLeave:()=>{Q||z(!1)},onDragEnd:()=>z(!1),onPointerDown:J=>{J.target instanceof HTMLElement&&J.target.dataset.dismissible===
+---
+📍 Eusébio, CE
+---
+Estética automotiva premium no Eusébio. 
+---
+, transparência e resultado garantido.
+---
+@duodetailingstudio
+---
+© 2026 DUO Estética Automotiva. Todos os direitos reservados.
+---
+duo-hero__container
+---
+duo-hero__logo
+---
+Mais de 500 carros transformados no Eusébio
+---
+ Tudo em um só lugar.
+---
+Estética automotiva completa no Eusébio, da lavagem detalhada à vitrificação cerâmica.
+---
+QUERO TRANSFORMAR MEU CARRO
+---
+Reproduzir vídeo
+---
+Pausar vídeo
+---
+VER SERVIÇOS
+---
+Pintura opaca e sem brilho
+---
+Seu carro parece velho, mesmo sendo novo. Você já tentou lavar, encerar, mas o brilho não volta.
+---
+Riscos e marcas que não saem
+---
+Arranhões, hologramas, marcas de lavagem mal feita. Você já tentou polir e só piorou.
+---
+Você já tentou aromatizante, lavagem comum, mas o cheiro insiste em voltar.
+---
+Banco rachando, painel desbotando, calor insuportável. E você sabe que isso só piora.
+---
+ disso, não é?
+---
+A verdade é:
+---
+ Lavagem comum não resolve. Polimento mal feito estraga a pintura. E você continua gastando dinheiro sem resultado.
+---
+Mas tem solução.
+---
+Quero a solução
+---
+Correção profunda da pintura com polimento técnico + proteção cerâmica que dura até 2 anos. Brilho intenso, fácil de limpar e resistente a riscos.
+---
+Quem quer resultado espelhado e proteção duradoura.
+---
+Higienização Interna
+---
+Limpeza profunda que remove manchas, odores e bactérias. Deixa o interior como novo.
+---
+Quem quer eliminar mal cheiro e deixar o interior impecável.
+---
+Limpeza completa e minuciosa com produtos profissionais. Cada detalhe é cuidado.
+---
+Quem quer manter o carro limpo e bem cuidado.
+---
+Película de proteção de pintura contra pedradas e riscos + insulfilm que reduz calor, protege contra UV e dá privacidade.
+---
+Quem quer proteção definitiva e conforto térmico.
+---
+Do básico ao premium — tudo feito com técnica e equipamento profissional.
+---
+Para quem é:
+---
+../../assets/videos/DUO - Reels Lavar o carro rápido... - Digga.mp4
+---
+Veja na prática como iremos cuidar do seu carro: do primeiro passo à finalização impecável.
+---
+Vídeo anterior
+---
+Selecionar vídeo
+---
+:`Ir para o vídeo ${g+1}`,
+---
+Quer ver como ficaria no seu carro? Envie modelo e cor pelo WhatsApp.
+---
+Solicite seu Orçamento
+---
+Próximo vídeo
+---
+Pelo WhatsApp, você conta o que precisa e tira todas as dúvidas.
+---
+Rápido e fácil
+---
+Você escolhe o melhor dia e horário. Cada carro tem seu tempo.
+---
+Horário flexível
+---
+Avaliamos seu carro e explicamos o que precisa ser feito, quanto custa e quanto tempo leva.
+---
+Orçamento sem compromisso
+---
+Você pode acompanhar o processo. Transparência total. Só sai daqui satisfeito.
+---
+Agendar minha visita
+---
+Fiz a vitrificação na DUO e o resultado superou minhas expectativas. O carro ficou brilhando como nunca vi. Atendimento impecável, explicaram tudo antes de fazer.
+---
+Levei meu carro com a pintura toda riscada. Fizeram o polimento técnico e ficou espelhado. Parece carro novo. Recomendo demais.
+---
+Estrutura top, atendimento profissional e resultado impecável. Não troco mais de estética.
+---
+Clientes Dizem
+---
+EU TAMBÉM QUERO ESSE RESULTADO
+---
+Galpão equipado com maquinário de ponta.
+---
+Transparência Total
+---
+Você acompanha cada etapa. Explicamos tudo antes de fazer. Sem surpresas e custos extras.
+---
+Resultado Garantido
+---
+Não fazemos gambiarras no seu carro. Fazemos certo — ou refazemos até ficar perfeito.
+---
+Cada carro é único. A gente entende o que você precisa e faz sob medida.
+---
+Localização Estratégica
+---
+Av. Eusébio de Queiroz, 4985 — Fácil de chegar, fácil de estacionar.
+---
+Horário Flexível
+---
+Segunda a sábado. Agendamento facilitado para não atrapalhar sua rotina.
+---
+Depende do serviço e do estado do seu carro. Na avaliação, a gente te passa o prazo exato.
+---
+O valor varia de acordo com o estado do seu carro e o serviço escolhido. Você traz o carro, a gente avalia e passa o orçamento detalhado.
+---
+Posso acompanhar o serviço?
+---
+Sim! Transparência total. Você pode acompanhar o processo e tirar dúvidas a qualquer momento.
+---
+A vitrificação dura quanto tempo?
+---
+Com os cuidados certos (lavagem adequada, sem produtos abrasivos), dura até 2 anos.
+---
+Vocês fazem orçamento sem compromisso?
+---
+Sim. Você traz o carro, a gente avalia e passa o orçamento. Sem compromisso.
+---
+Tem garantia?
+---
+Sim. Se algo não sair como esperado, a gente refaz até você ficar satisfeito.
+---
+Sim. Aceitamos cartão de crédito com parcelamento.
+---
+Vocês buscam e entregam o carro?
+---
+Não. Você traz o carro até o nosso galpão.
+---
+Ainda tem dúvida? Fale com a gente
+---
+Promoção de Inauguração
+---
+Condições especiais para vitrificação e outros serviços.
+---
+Válido apenas nos primeiros 
+---
+ do novo galpão.
+---
+Vitrificação com desconto exclusivo
+---
+Brindes para os primeiros clientes
+---
+Quero saber as condições
+---
+Localização DUO Estética Automotiva
+---
+Av. Eusébio de Queiroz, 4985 — Eusébio, CE
+---
+Segunda a Sábado
+---
+Seu carro merece o 
+---
+E você merece 
+---
+transparência
+---
+, qualidade e resultado garantido.
+---
+Fale com a gente no WhatsApp agora. E agende sua visita.
+---
+Falar com a DUO no WhatsApp
+---
+🔥 Promoção de inauguração válida apenas nos primeiros 15 dias
