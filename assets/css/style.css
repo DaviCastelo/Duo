@@ -1834,36 +1834,68 @@ section { scroll-margin-top: calc(var(--nav-h) + 18px); }
   position: fixed;
   right: 22px;
   bottom: 22px;
-  z-index: 180;
-  width: 60px;
-  height: 60px;
+  z-index: 999999;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   background: linear-gradient(135deg, var(--wa-500), var(--wa-600));
   color: #fff;
   box-shadow: 0 14px 36px -8px rgba(37, 211, 102, 0.65);
-  transition: transform 0.25s var(--ease-spring), box-shadow 0.25s;
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.25s, background 0.25s;
 }
 .wa-fab:hover { transform: scale(1.1) rotate(6deg); box-shadow: 0 18px 44px -8px rgba(37, 211, 102, 0.85); }
 .wa-fab--bot {
-  background: var(--gold-grad);
-  color: var(--ink-950);
-  box-shadow: 0 14px 36px -8px rgba(212, 160, 23, 0.55);
+  background: linear-gradient(135deg, var(--wa-500), var(--wa-600));
+  color: #fff;
+  border: none;
+  box-shadow: 0 14px 36px -8px rgba(37, 211, 102, 0.65);
 }
-.wa-fab--bot:hover { box-shadow: 0 18px 44px -8px rgba(212, 160, 23, 0.75); }
-.wa-fab--bot .wa-fab__ping { border-color: var(--gold-400); }
-.wa-fab .ic { width: 30px; height: 30px; }
+.wa-fab--bot:hover {
+  transform: scale(1.08);
+  box-shadow: 0 18px 44px -8px rgba(37, 211, 102, 0.85);
+}
+.wa-fab--bot.is-open {
+  background: var(--ink-850);
+  color: var(--silver-100);
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 10px 32px -8px rgba(0, 0, 0, 0.55);
+}
+.wa-fab--bot.is-open:hover {
+  transform: scale(1.06);
+  box-shadow: 0 14px 36px -8px rgba(0, 0, 0, 0.65);
+}
+.wa-fab__icon { grid-area: 1 / 1; width: 28px; height: 28px; transition: opacity 0.2s, transform 0.2s; }
+.wa-fab__icon--close { opacity: 0; transform: scale(0.7) rotate(-90deg); }
+.wa-fab.is-open .wa-fab__icon--chat { opacity: 0; transform: scale(0.7) rotate(90deg); }
+.wa-fab.is-open .wa-fab__icon--close { opacity: 1; transform: scale(1) rotate(0deg); }
+.wa-fab.is-open .wa-fab__tip { opacity: 0 !important; pointer-events: none; }
+.wa-fab--bot .wa-fab__ping { display: none; }
+.wa-fab .ic { width: 28px; height: 28px; }
 
-/* Typebot — janela acima do botão flutuante */
+/* Esconde botão nativo do Typebot — só o nosso FAB fica visível */
+typebot-bubble::part(button),
+typebot-bubble::part(preview-message) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Typebot — desktop: janela acima do botão */
 typebot-bubble::part(bot) {
   bottom: 90px;
   right: 22px;
-  height: min(640px, calc(100vh - 120px));
-}
-typebot-bubble::part(preview-message) {
-  bottom: 90px;
-  right: 22px;
+  width: min(420px, calc(100vw - 44px)) !important;
+  max-width: min(420px, calc(100vw - 44px)) !important;
+  height: min(620px, calc(100dvh - 120px)) !important;
+  max-height: min(620px, calc(100dvh - 120px)) !important;
+  border-radius: 16px;
+  overflow: hidden;
 }
 .wa-fab__ping {
   position: absolute;
@@ -1924,6 +1956,11 @@ typebot-bubble::part(preview-message) {
   transition: opacity 0.3s, transform 0.3s var(--ease-out), visibility 0.3s, color 0.2s;
 }
 .totop.is-visible { opacity: 1; visibility: visible; transform: none; }
+.totop.is-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none;
+}
 .totop:hover { color: var(--silver-100); }
 .totop .ic { width: 19px; height: 19px; }
 .totop__ring { position: absolute; inset: 3px; transform: rotate(-90deg); }
@@ -2002,8 +2039,21 @@ typebot-bubble::part(preview-message) {
   .promo__unit b { min-width: 62px; }
   .promo__count { gap: 6px; }
   .topbar__link span { display: none; }
-  .wa-fab { right: 16px; bottom: 16px; }
-  .totop { right: 20px; bottom: 88px; }
+  .wa-fab { right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); width: 54px; height: 54px; }
+  .totop { right: 18px; bottom: calc(84px + env(safe-area-inset-bottom)); }
+
+  /* Typebot — mobile: bottom sheet com espaço pro botão fechar */
+  typebot-bubble::part(bot) {
+    inset: auto 0 0 0 !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: calc(100dvh - 76px) !important;
+    max-height: calc(100dvh - 76px) !important;
+    border-radius: 18px 18px 0 0;
+  }
   .ba__handle-grip { width: 44px; height: 44px; }
   .ba__pane { padding-bottom: 48px; }
   .ba__hint { bottom: 13px; white-space: nowrap; font-size: 9.5px; letter-spacing: 0.16em; }

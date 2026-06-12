@@ -911,8 +911,8 @@
 
   <!-- ====== FLUTUANTES ====== -->
   <button type="button" class="wa-fab wa-fab--bot" id="waFab" aria-label="Abrir chat com o Amigo do Brilho">
-    <span class="wa-fab__ping" aria-hidden="true"></span>
-    <svg class="ic"><use href="#i-msg"/></svg>
+    <svg class="ic wa-fab__icon wa-fab__icon--chat" aria-hidden="true"><use href="#i-msg"/></svg>
+    <svg class="ic wa-fab__icon wa-fab__icon--close" aria-hidden="true"><use href="#i-x"/></svg>
     <span class="wa-fab__tip" id="waTip">Oi! Posso te ajudar? 👋</span>
   </button>
 
@@ -923,7 +923,7 @@
 
   <!-- Typebot: assistente "Amigo do Brilho" -->
   <script type="module">
-    import Typebot from "https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js";
+    import Typebot from "https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js";
 
     Typebot.initBubble({
       typebot: "amigodobrilho",
@@ -931,14 +931,23 @@
         button: { isHidden: true },
         placement: "right",
         chatWindow: {
-          backgroundColor: "#0a0e24",
+          backgroundColor: "#ffffff",
           maxWidth: "420px",
-          maxHeight: "min(640px, calc(100vh - 120px))",
+          maxHeight: "620px",
         },
       },
-      previewMessage: {
-        message: "Oi! Sou o Amigo do Brilho. Posso te ajudar com orçamento? 👋",
-        autoShowDelay: 6000,
+      onOpen: () => {
+        const fab = document.getElementById("waFab");
+        fab?.classList.add("is-open");
+        fab?.classList.remove("show-tip");
+        fab?.setAttribute("aria-label", "Fechar chat");
+        document.getElementById("toTop")?.classList.add("is-hidden");
+      },
+      onClose: () => {
+        const fab = document.getElementById("waFab");
+        fab?.classList.remove("is-open");
+        fab?.setAttribute("aria-label", "Abrir chat com o Amigo do Brilho");
+        document.getElementById("toTop")?.classList.remove("is-hidden");
       },
     });
 
@@ -949,7 +958,10 @@
       Typebot.open();
     };
 
-    document.getElementById("waFab")?.addEventListener("click", openBot);
+    document.getElementById("waFab")?.addEventListener("click", (event) => {
+      event.preventDefault();
+      Typebot.toggle();
+    });
     document.querySelectorAll("[data-bot]").forEach((el) => {
       el.addEventListener("click", openBot);
     });
