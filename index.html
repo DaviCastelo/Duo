@@ -925,16 +925,12 @@
   <script type="module">
     import Typebot from "https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js";
 
-    Typebot.initBubble({
+    Typebot.initPopup({
       typebot: "amigodobrilho",
       theme: {
-        button: { isHidden: true },
-        placement: "right",
-        chatWindow: {
-          backgroundColor: "#ffffff",
-          maxWidth: "420px",
-          maxHeight: "620px",
-        },
+        width: "min(420px, calc(100vw - 32px))",
+        backgroundColor: "#ffffff",
+        zIndex: 999998,
       },
       onOpen: () => {
         const fab = document.getElementById("waFab");
@@ -958,9 +954,11 @@
       Typebot.open();
     };
 
-    document.getElementById("waFab")?.addEventListener("click", (event) => {
+    const fab = document.getElementById("waFab");
+    fab?.addEventListener("click", (event) => {
       event.preventDefault();
-      Typebot.toggle();
+      if (fab.classList.contains("is-open")) Typebot.close();
+      else Typebot.open();
     });
     document.querySelectorAll("[data-bot]").forEach((el) => {
       el.addEventListener("click", openBot);
