@@ -14,7 +14,6 @@
 
   /* Data final da promoção de inauguração (edite aqui) */
   const PROMO_END = "2026-06-27T23:59:59-03:00";
-  const WA_NUMBER = "5585984202244";
 
   /* ----------------------------------------------------------
      PRELOADER
@@ -412,10 +411,17 @@
       const ready = builder.vehicle && builder.services.size > 0;
       bSend.classList.toggle("is-disabled", !ready);
       bSend.setAttribute("aria-disabled", String(!ready));
-      bSend.href = ready
-        ? `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(compose())}`
-        : "#";
     };
+
+    bSend?.addEventListener("click", () => {
+      if (bSend.classList.contains("is-disabled")) return;
+      window.openDuoBot?.({
+        Mensagem: compose(),
+        Nome: builder.name.trim() || undefined,
+        Veículo: builder.vehicle || undefined,
+        Serviços: builder.services.size ? [...builder.services].join(", ") : undefined,
+      });
+    });
 
     $$("#builderVehicles .chip").forEach((chip) => {
       chip.addEventListener("click", () => {
