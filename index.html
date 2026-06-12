@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Duo Estética Automotiva | Vitrificação, Polimento e Proteção em Eusébio-CE</title>
   <meta name="description" content="Estética automotiva premium no Eusébio. Vitrificação cerâmica, polimento técnico, PPF, insulfilm e mais. Qualidade, transparência e resultado garantido." />
   <meta name="author" content="Duo Estética Automotiva" />
@@ -288,14 +288,16 @@
     </section>
 
     <!-- ====== MARQUEE ====== -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track marquee__track--a">
-        <span>Vitrificação <i>✦</i> Polimento Técnico <i>✦</i> PPF <i>✦</i> Insulfilm <i>✦</i> Higienização <i>✦</i> Lavagem Detalhada <i>✦</i>&nbsp;</span>
-        <span>Vitrificação <i>✦</i> Polimento Técnico <i>✦</i> PPF <i>✦</i> Insulfilm <i>✦</i> Higienização <i>✦</i> Lavagem Detalhada <i>✦</i>&nbsp;</span>
-      </div>
-      <div class="marquee__track marquee__track--b">
-        <span>Brilho Espelhado <i>✦</i> Proteção Cerâmica <i>✦</i> Interior Impecável <i>✦</i> Conforto Térmico <i>✦</i> Resultado Garantido <i>✦</i>&nbsp;</span>
-        <span>Brilho Espelhado <i>✦</i> Proteção Cerâmica <i>✦</i> Interior Impecável <i>✦</i> Conforto Térmico <i>✦</i> Resultado Garantido <i>✦</i>&nbsp;</span>
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee">
+        <div class="marquee__track marquee__track--a">
+          <span>Vitrificação <i>✦</i> Polimento Técnico <i>✦</i> PPF <i>✦</i> Insulfilm <i>✦</i> Higienização <i>✦</i> Lavagem Detalhada <i>✦</i>&nbsp;</span>
+          <span aria-hidden="true">Vitrificação <i>✦</i> Polimento Técnico <i>✦</i> PPF <i>✦</i> Insulfilm <i>✦</i> Higienização <i>✦</i> Lavagem Detalhada <i>✦</i>&nbsp;</span>
+        </div>
+        <div class="marquee__track marquee__track--b">
+          <span>Brilho Espelhado <i>✦</i> Proteção Cerâmica <i>✦</i> Interior Impecável <i>✦</i> Conforto Térmico <i>✦</i> Resultado Garantido <i>✦</i>&nbsp;</span>
+          <span aria-hidden="true">Brilho Espelhado <i>✦</i> Proteção Cerâmica <i>✦</i> Interior Impecável <i>✦</i> Conforto Térmico <i>✦</i> Resultado Garantido <i>✦</i>&nbsp;</span>
+        </div>
       </div>
     </div>
 
@@ -856,7 +858,7 @@
         <h2 class="final__title" data-reveal>Seu carro merece o <em class="chrome-text chrome-text--shine">melhor</em>.</h2>
         <p class="final__sub" data-reveal style="--d:.12s">E você merece <strong>transparência</strong>, qualidade e resultado garantido.</p>
         <p class="final__text" data-reveal style="--d:.2s">Fale com a gente no WhatsApp agora. E agende sua visita.</p>
-        <div data-reveal style="--d:.3s">
+        <div class="final__actions" data-reveal style="--d:.3s">
           <a href="https://wa.me/5585984202244?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20Duo."
              target="_blank" rel="noopener noreferrer" class="btn btn--wa btn--xl" data-magnetic>
             <svg class="ic"><use href="#i-wa"/></svg><span>Falar com a DUO no WhatsApp</span>
@@ -925,25 +927,38 @@
   <script type="module">
     import Typebot from "https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js";
 
+    let botOpen = false;
+    let ignoreOpenUntil = 0;
+
+    const fab = document.getElementById("waFab");
+
+    const setFabOpen = (open) => {
+      botOpen = open;
+      fab?.classList.toggle("is-open", open);
+      fab?.setAttribute("aria-label", open ? "Fechar chat" : "Abrir chat com o Amigo do Brilho");
+      if (open) fab?.classList.remove("show-tip");
+      document.getElementById("toTop")?.classList.toggle("is-hidden", open);
+    };
+
+    const blockReopen = () => {
+      ignoreOpenUntil = Date.now() + 500;
+      if (fab) {
+        fab.style.pointerEvents = "none";
+        setTimeout(() => { fab.style.pointerEvents = ""; }, 500);
+      }
+    };
+
     Typebot.initPopup({
       typebot: "amigodobrilho",
       theme: {
-        width: "min(420px, calc(100vw - 32px))",
+        width: "min(420px, calc(100% - 32px))",
         backgroundColor: "#ffffff",
         zIndex: 999998,
       },
-      onOpen: () => {
-        const fab = document.getElementById("waFab");
-        fab?.classList.add("is-open");
-        fab?.classList.remove("show-tip");
-        fab?.setAttribute("aria-label", "Fechar chat");
-        document.getElementById("toTop")?.classList.add("is-hidden");
-      },
+      onOpen: () => setFabOpen(true),
       onClose: () => {
-        const fab = document.getElementById("waFab");
-        fab?.classList.remove("is-open");
-        fab?.setAttribute("aria-label", "Abrir chat com o Amigo do Brilho");
-        document.getElementById("toTop")?.classList.remove("is-hidden");
+        setFabOpen(false);
+        blockReopen();
       },
     });
 
@@ -951,14 +966,22 @@
 
     const openBot = (event) => {
       event.preventDefault();
+      if (Date.now() < ignoreOpenUntil) return;
       Typebot.open();
     };
 
-    const fab = document.getElementById("waFab");
     fab?.addEventListener("click", (event) => {
       event.preventDefault();
-      if (fab.classList.contains("is-open")) Typebot.close();
-      else Typebot.open();
+      event.stopPropagation();
+
+      if (botOpen) {
+        blockReopen();
+        Typebot.close();
+        return;
+      }
+
+      if (Date.now() < ignoreOpenUntil) return;
+      Typebot.open();
     });
     document.querySelectorAll("[data-bot]").forEach((el) => {
       el.addEventListener("click", openBot);

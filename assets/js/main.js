@@ -578,6 +578,32 @@
   }
 
   /* ----------------------------------------------------------
+     MOBILE — bloqueia scroll horizontal residual
+  ---------------------------------------------------------- */
+  const root = document.documentElement;
+  const resetScrollX = () => {
+    if (root.scrollLeft !== 0) root.scrollLeft = 0;
+  };
+  addEventListener("scroll", resetScrollX, { passive: true });
+  addEventListener("resize", resetScrollX, { passive: true });
+
+  let touchX = 0;
+  let touchY = 0;
+  addEventListener("touchstart", (e) => {
+    touchX = e.touches[0].clientX;
+    touchY = e.touches[0].clientY;
+  }, { passive: true });
+
+  addEventListener("touchmove", (e) => {
+    if (root.scrollWidth <= root.clientWidth + 1) return;
+    const dx = Math.abs(e.touches[0].clientX - touchX);
+    const dy = Math.abs(e.touches[0].clientY - touchY);
+    if (dx <= dy || dx < 8) return;
+    const allow = e.target.closest(".ba, .tcarousel, typebot-popup, input, textarea, select");
+    if (!allow) e.preventDefault();
+  }, { passive: false });
+
+  /* ----------------------------------------------------------
      ANO DO RODAPÉ
   ---------------------------------------------------------- */
   const yearEl = $("#year");
