@@ -104,7 +104,11 @@
   const progress = $("#scrollProgress");
   const toTop = $("#toTop");
   const toTopRing = $("#toTopProgress");
-  const RING = 131.9;
+  const RING = 2 * Math.PI * 20;
+  if (toTopRing) {
+    toTopRing.style.strokeDasharray = String(RING);
+    toTopRing.style.strokeDashoffset = String(RING);
+  }
 
   let ticking = false;
   const onScroll = () => {

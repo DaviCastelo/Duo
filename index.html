@@ -919,8 +919,11 @@
   </button>
 
   <button class="totop" id="toTop" aria-label="Voltar ao topo">
-    <svg class="totop__ring" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="none"/><circle id="toTopProgress" cx="24" cy="24" r="21" fill="none"/></svg>
-    <svg class="ic"><use href="#i-up"/></svg>
+    <svg class="totop__ring" viewBox="0 0 48 48" aria-hidden="true">
+      <circle class="totop__ring-track" cx="24" cy="24" r="20" fill="none"/>
+      <circle class="totop__ring-progress" id="toTopProgress" cx="24" cy="24" r="20" fill="none"/>
+    </svg>
+    <svg class="ic totop__icon"><use href="#i-up"/></svg>
   </button>
 
   <!-- Typebot: assistente "Amigo do Brilho" -->

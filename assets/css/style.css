@@ -2012,16 +2012,20 @@ typebot-popup::part(popup) {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   color: var(--gold-300);
-  background: rgba(10, 14, 36, 0.85);
+  background: rgba(10, 14, 36, 0.92);
   border: 1px solid var(--border-strong);
   backdrop-filter: blur(8px);
+  overflow: hidden;
   opacity: 0;
   visibility: hidden;
   transform: translateY(14px);
   transition: opacity 0.3s, transform 0.3s var(--ease-out), visibility 0.3s, color 0.2s;
+  -webkit-tap-highlight-color: transparent;
 }
 .totop.is-visible { opacity: 1; visibility: visible; transform: none; }
 .totop.is-hidden {
@@ -2030,14 +2034,31 @@ typebot-popup::part(popup) {
   pointer-events: none;
 }
 .totop:hover { color: var(--silver-100); }
-.totop .ic { width: 19px; height: 19px; }
-.totop__ring { position: absolute; inset: 3px; transform: rotate(-90deg); }
-.totop__ring circle { stroke: rgba(179, 194, 224, 0.15); stroke-width: 2.5; }
-.totop__ring #toTopProgress {
+.totop__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  pointer-events: none;
+}
+.totop__ring-track,
+.totop__ring-progress {
+  stroke-width: 2.5;
+}
+.totop__ring-track { stroke: rgba(179, 194, 224, 0.18); }
+.totop__ring-progress {
   stroke: var(--gold-400);
   stroke-linecap: round;
-  stroke-dasharray: 131.9;
-  stroke-dashoffset: 131.9;
+}
+.totop__icon {
+  position: relative;
+  z-index: 1;
+  width: 18px;
+  height: 18px;
+  flex: none;
+  display: block;
 }
 
 /* ============================================================
@@ -2146,7 +2167,13 @@ typebot-popup::part(popup) {
   .wa-fab__tip { display: none; }
   .ba__sheen { animation: none; transform: none; }
   .wa-fab { right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); width: 54px; height: 54px; }
-  .totop { right: 18px; bottom: calc(84px + env(safe-area-inset-bottom)); }
+  .totop {
+    right: 16px;
+    bottom: calc(82px + env(safe-area-inset-bottom));
+    width: 50px;
+    height: 50px;
+  }
+  .totop__icon { width: 16px; height: 16px; }
 
   typebot-popup::part(popup) {
     width: 100% !important;
