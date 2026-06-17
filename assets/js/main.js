@@ -377,7 +377,6 @@
   ---------------------------------------------------------- */
   const builder = {
     vehicle: null,
-    services: new Set(),
     name: "",
   };
   const bMsg = $("#builderMessage");
@@ -390,15 +389,12 @@
     bTime.textContent = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
 
     const compose = () => {
-      if (!builder.vehicle && builder.services.size === 0) {
-        return "Olá! Selecione o veículo e os serviços ao lado para montar sua mensagem…";
+      if (!builder.vehicle) {
+        return "Olá! Selecione seu veículo ao lado para começar…";
       }
       let msg = "Olá! 👋";
       if (builder.name.trim()) msg += ` Meu nome é ${builder.name.trim()}.`;
-      msg += builder.vehicle ? `\nTenho um ${builder.vehicle}` : "\nTenho um carro";
-      msg += builder.services.size
-        ? ` e quero orçamento de: ${[...builder.services].join(", ")}.`
-        : " e quero um orçamento.";
+      msg += `\nTenho um ${builder.vehicle} e quero um orçamento.`;
       msg += "\nPode me passar valores e prazos?";
       return msg;
     };
@@ -408,18 +404,25 @@
       bBubble.classList.remove("is-pop");
       void bBubble.offsetWidth; // reinicia a animação
       bBubble.classList.add("is-pop");
-      const ready = builder.vehicle && builder.services.size > 0;
+      const ready = Boolean(builder.vehicle);
       bSend.classList.toggle("is-disabled", !ready);
       bSend.setAttribute("aria-disabled", String(!ready));
+      bSend.href = "#";
     };
 
-    bSend?.addEventListener("click", () => {
+    const vehicleMap = {
+      Hatch: "Sedan/Hatch",
+      Sedan: "Sedan/Hatch",
+      SUV: "SUV",
+      Picape: "Caminhonete",
+    };
+
+    bSend.addEventListener("click", (e) => {
+      e.preventDefault();
       if (bSend.classList.contains("is-disabled")) return;
       window.openDuoBot?.({
-        Mensagem: compose(),
-        Nome: builder.name.trim() || undefined,
-        Veículo: builder.vehicle || undefined,
-        Serviços: builder.services.size ? [...builder.services].join(", ") : undefined,
+        tipo_veiculo: vehicleMap[builder.vehicle] || builder.vehicle,
+        nome_cliente: builder.name.trim() || undefined,
       });
     });
 
@@ -429,14 +432,6 @@
         $$("#builderVehicles .chip").forEach((c) => c.classList.remove("is-on"));
         builder.vehicle = on ? null : chip.dataset.vehicle;
         if (!on) chip.classList.add("is-on");
-        update();
-      });
-    });
-    $$("#builderServices .chip").forEach((chip) => {
-      chip.addEventListener("click", () => {
-        const s = chip.dataset.service;
-        if (builder.services.has(s)) { builder.services.delete(s); chip.classList.remove("is-on"); }
-        else { builder.services.add(s); chip.classList.add("is-on"); }
         update();
       });
     });
