@@ -14,6 +14,7 @@
 
   /* Data final da promoção de inauguração (edite aqui) */
   const PROMO_END = "2026-06-27T23:59:59-03:00";
+  const WA_NUMBER = "5585984202244";
 
   /* ----------------------------------------------------------
      PRELOADER
@@ -407,24 +408,10 @@
       const ready = Boolean(builder.vehicle);
       bSend.classList.toggle("is-disabled", !ready);
       bSend.setAttribute("aria-disabled", String(!ready));
-      bSend.href = "#";
+      bSend.href = ready
+        ? `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(compose())}`
+        : "#";
     };
-
-    const vehicleMap = {
-      Hatch: "Sedan/Hatch",
-      Sedan: "Sedan/Hatch",
-      SUV: "SUV",
-      Picape: "Caminhonete",
-    };
-
-    bSend.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (bSend.classList.contains("is-disabled")) return;
-      window.openDuoBot?.({
-        tipo_veiculo: vehicleMap[builder.vehicle] || builder.vehicle,
-        nome_cliente: builder.name.trim() || undefined,
-      });
-    });
 
     $$("#builderVehicles .chip").forEach((chip) => {
       chip.addEventListener("click", () => {
